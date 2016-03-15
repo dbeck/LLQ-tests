@@ -1,0 +1,3 @@
+[submodule "LLQ"]
+	path = LLQ
+	url = https://github.com/dbeck/LLQ.git

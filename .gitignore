@@ -26,8 +26,16 @@
 *.exe
 *.out
 *.app
+*.t
+
+# Mac stuff
+.DS_Store
+LLQ-tests.build/
+LLQ-tests.xcodeproj/
 
 # CMake
+CMakeScripts
+Testing
 CTestTestfile.cmake
 CMakeCache.txt
 CMakeFiles
@@ -47,5 +55,3 @@ Makefile
 */CMakeFiles/*
 */cmake_install.cmake
 */Makefile
-*/Testing
-*/*/Testing

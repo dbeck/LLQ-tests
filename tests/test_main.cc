@@ -3,9 +3,7 @@
 #include "buffer_test.hh"
 #include "file_test.hh"
 #include "queue_test.hh"
-#include "reader_test.hh"
 #include "shmem_test.hh"
-#include "writer_test.hh"
 
 int main(int argc, char ** argv)
 {

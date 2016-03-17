@@ -13,8 +13,6 @@ add_executable( test_main.t
                 test_main.cc
                 simple_test.hh
                 buffer_test.hh ../LLQ/buffer.hh
-                reader_test.hh ../LLQ/reader.hh
-                writer_test.hh ../LLQ/writer.hh
                 queue_test.hh ../LLQ/queue.hh
                 file_test.hh ../LLQ/file.hh
                 shmem_test.hh ../LLQ/shmem.hh )

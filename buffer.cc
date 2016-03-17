@@ -3,6 +3,6 @@
 
 int main()
 {
-  LLQ::buffer b(0);
+  LLQ::buffer b(0,0,false);
   return 0;
 }

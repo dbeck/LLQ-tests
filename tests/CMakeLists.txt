@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g3 -O0 ${LLQ_COMMON_FLAGS}")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 ${LLQ_COMMON_FLAGS}")
 
 link_libraries( gtest )
+include_directories( ./LLQ ../googletest/googletest/include )
 
 add_executable( test_main.t
                 test_main.cc

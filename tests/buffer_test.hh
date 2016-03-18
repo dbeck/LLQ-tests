@@ -13,10 +13,11 @@ namespace LLQ { namespace test {
   
   TEST_F(buffer_test, basic)
   {
+    shmem::destroy("/buffer_test.basic");
     size_t ps = getpagesize();
-    shmem sm{"/basic",ps,true};
+    shmem sm{"/buffer_test.basic",ps*2,true};
     buffer buf{sm.fd(), sm.size(), sm.writable()};
-    EXPECT_TRUE(shmem::destroy("/basic"));
+    EXPECT_TRUE(shmem::destroy("/buffer_test.basic"));
   }
 }}
 

@@ -13,13 +13,13 @@ namespace LLQ { namespace test {
   TEST_F(shmem_test, destroy_while_active)
   {
     size_t ps = getpagesize();
-    shmem sm{"/setup_simple",ps,true};
-    EXPECT_TRUE(shmem::destroy("/setup_simple"));
+    shmem sm{"/shmem_test.setup_simple",ps,true};
+    EXPECT_TRUE(shmem::destroy("/shmem_test.setup_simple"));
   }
   
   TEST_F(shmem_test, cannot_destroy_non_existant)
   {
-    EXPECT_EQ(false, shmem::destroy("/cannot_destroy_non_existant"));
+    EXPECT_EQ(false, shmem::destroy("/shmem_test.cannot_destroy_non_existant"));
   }
   
   TEST_F(shmem_test, readonly_failes_to_create)
@@ -27,7 +27,7 @@ namespace LLQ { namespace test {
     size_t ps = getpagesize();
     {
       auto fn = [ps]() {
-        shmem sm{"/readonly_failes_to_create",ps,false};
+        shmem sm{"/shmem_test.readonly_FTC",ps,false};
       };
       EXPECT_THROW(fn(), std::runtime_error);
     }
@@ -37,17 +37,17 @@ namespace LLQ { namespace test {
   {
     size_t ps = getpagesize();
     {
-      shmem::destroy("/writable_flag");
+      shmem::destroy("/shmem_test.writable_flag");
       
-      shmem sm1{"/writable_flag",ps,true};
+      shmem sm1{"/shmem_test.writable_flag",ps,true};
       EXPECT_EQ(true, sm1.writable());
       
       {
-        shmem sm2{"/writable_flag",ps,false};
+        shmem sm2{"/shmem_test.writable_flag",ps,false};
         EXPECT_FALSE(sm2.writable());
       }
       
-      EXPECT_TRUE(shmem::destroy("/writable_flag"));
+      EXPECT_TRUE(shmem::destroy("/shmem_test.writable_flag"));
     }
   }
 
@@ -55,15 +55,15 @@ namespace LLQ { namespace test {
   {
     size_t ps = getpagesize();
     {
-      shmem sm1{"/double_destroy_after_close",ps,true};
+      shmem sm1{"/shmem_test.double_destroy_AC",ps,true};
       EXPECT_EQ(true, sm1.writable());
       EXPECT_EQ(ps, sm1.size());
-      EXPECT_EQ(sm1.name(),std::string{"/double_destroy_after_close"});
+      EXPECT_EQ(sm1.name(),std::string{"/shmem_test.double_destroy_AC"});
       EXPECT_GT(sm1.fd(), -1);
     }
     
-    EXPECT_TRUE(shmem::destroy("/double_destroy_after_close"));
-    EXPECT_FALSE(shmem::destroy("/double_destroy_after_close"));
+    EXPECT_TRUE(shmem::destroy("/shmem_test.double_destroy_AC"));
+    EXPECT_FALSE(shmem::destroy("/shmem_test.double_destroy_AC"));
   }
   
   TEST_F(shmem_test, empty_name_throws)
@@ -93,7 +93,7 @@ namespace LLQ { namespace test {
     size_t ps = getpagesize();
     {
       auto fn = [ps]() {
-        shmem sm{"missing_slash_throws",ps,false};
+        shmem sm{"shmem_test.missing_slash_throws",ps,false};
       };
       EXPECT_THROW(fn(), std::invalid_argument);
     }
@@ -103,7 +103,7 @@ namespace LLQ { namespace test {
   {
     {
       auto fn = []() {
-        shmem sm{"/invalid_pagesize_throws",0,false};
+        shmem sm{"/shmem_test.invalid_pagesize_throws",0,false};
       };
       EXPECT_THROW(fn(), std::invalid_argument);
     }

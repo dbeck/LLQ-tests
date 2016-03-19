@@ -12,9 +12,20 @@ include_directories( ./LLQ ../googletest/googletest/include )
 add_executable( test_main.t
                 test_main.cc
                 simple_test.hh
+                ../LLQ/config.hh
+                ../LLQ/item.hh
+                ../LLQ/no_copy.hh
+                ../LLQ/no_default_construct.hh
+                test_config.hh
+                layout_test.hh ../LLQ/layout.hh
                 buffer_test.hh ../LLQ/buffer.hh
                 queue_test.hh ../LLQ/queue.hh
                 file_test.hh ../LLQ/file.hh
                 shmem_test.hh ../LLQ/shmem.hh )
+
+add_executable( perf_main.t
+                perf_main.cc
+                perf.hh
+                ../LLQ/layout.hh )
 
 add_test( test_main.t ${EXECUTABLE_OUTPUT_PATH}/test_main.t )

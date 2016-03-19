@@ -6,7 +6,16 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL "-s -O3 ${LLQ_COMMON_FLAGS}")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g3 -O0 ${LLQ_COMMON_FLAGS}")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 ${LLQ_COMMON_FLAGS}")
 
-link_libraries( gtest )
+set(LINUX_RT "")
+
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+  message(STATUS ">>> Linux")
+  set(LINUX_RT rt)
+else()
+  message(STATUS ">>> Not Linux")
+endif()
+
+link_libraries( gtest ${LINUX_RT} )
 include_directories( ./LLQ ../googletest/googletest/include )
 
 add_executable( test_main.t

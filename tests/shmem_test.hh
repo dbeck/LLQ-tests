@@ -19,7 +19,7 @@ namespace LLQ { namespace test {
   
   TEST_F(shmem_test, cannot_destroy_non_existant)
   {
-    EXPECT_EQ(false, shmem::destroy("/shmem_test.cannot_destroy_non_existant"));
+    EXPECT_FALSE(shmem::destroy("/shmem_test.cannot_destroy_non_existant"));
   }
   
   TEST_F(shmem_test, readonly_failes_to_create)

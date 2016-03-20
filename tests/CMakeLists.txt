@@ -37,4 +37,16 @@ add_executable( perf_layout1.t
                 perf.hh
                 ../LLQ/layout.hh )
 
+add_executable( layout1_client.t
+                layout1_client.cc
+                ../LLQ/shmem.hh
+                ../LLQ/buffer.hh
+                ../LLQ/layout.hh )
+
+add_executable( layout1_server.t
+                layout1_server.cc
+                ../LLQ/shmem.hh
+                ../LLQ/buffer.hh
+                ../LLQ/layout.hh )
+
 add_test( test_main.t ${EXECUTABLE_OUTPUT_PATH}/test_main.t )

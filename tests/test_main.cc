@@ -4,6 +4,7 @@
 #include "file_test.hh"
 #include "queue_test.hh"
 #include "shmem_test.hh"
+#include "layout_test.hh"
 
 int main(int argc, char ** argv)
 {

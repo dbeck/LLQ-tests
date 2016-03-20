@@ -32,8 +32,8 @@ add_executable( test_main.t
                 file_test.hh ../LLQ/file.hh
                 shmem_test.hh ../LLQ/shmem.hh )
 
-add_executable( perf_main.t
-                perf_main.cc
+add_executable( perf_layout1.t
+                perf_layout1.cc
                 perf.hh
                 ../LLQ/layout.hh )
 

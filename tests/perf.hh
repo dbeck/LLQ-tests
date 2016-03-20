@@ -28,9 +28,13 @@ namespace LLQ { namespace test {
         uint64_t usec = duration_cast<microseconds>(now - start).count();
         double calls_per_usec = ((double)(n_calls)) / ((double)(usec));
         double usecs_per_call = ((double)(usec)) / ((double)(n_calls));
+        double calls_per_msec = ((double)(n_calls*1000.0)) / ((double)(usec));
+        double calls_per_sec  = ((double)(n_calls*1000.0*1000.0)) / ((double)(usec));
         std::cout << prefix
-                  << " : calls/usec: " << calls_per_usec
                   << " : usecs/call: " << usecs_per_call
+                  << " : calls/usec: " << calls_per_usec
+                  << " : calls/msec: " << calls_per_msec
+                  << " : calls/sec: "  << calls_per_sec
                   << std::endl;
         break;
       }

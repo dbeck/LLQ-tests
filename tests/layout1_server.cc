@@ -8,6 +8,8 @@
 int main()
 {
   using namespace LLQ;
+  
+  shmem::destroy("/layout1");
   shmem sm{"/layout1", 65536, true};
   buffer bf{sm.fd(), sm.size(), sm.writable()};
   layout_1<65536, 124> ll1{bf.ptr()};
@@ -15,12 +17,11 @@ int main()
   
   std::this_thread::sleep_for(std::chrono::seconds(10));
 
-  std::cout << "start pushing 655360 numbers\n";
-  for( uint32_t i=0; i<655360; ++i )
+  std::cout << "start pushing 65536000 numbers\n";
+  for( uint32_t i=0; i<65536000; ++i )
   {
-    ll1.push(&i, sizeof(i));
+    ll1.push(&i, 4);
   }
-  std::cout << "pushed 655360 numbers\n";
-  
+  std::cout << "pushed 65536000 numbers\n";
   return 0;
 }

@@ -4,6 +4,7 @@
 #include <LLQ/layout.hh>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 
 int main()
 {
@@ -59,6 +60,9 @@ int main()
     prev = *it;
   }
   std::cout << std::endl;
-  
+  double ratio = (double)(target.size()) / 65536000 * 100;
+  std::cout << "received " 
+            << std::fixed << std::setw( 11 ) << std::setprecision( 6 ) 
+            << ratio << "%\n";
   return 0;
 }
